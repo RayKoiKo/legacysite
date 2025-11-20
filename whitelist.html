@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LegacyLife – Whitelist RP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="main-header small">
+    <nav class="nav">
+        <div class="nav-left">
+            <img src="legacylife.png" alt="Logo LegacyLife" class="logo">
+            <span class="brand-name">LegacyLife</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="concessionnaire.html">Concessionnaire</a></li>
+            <li><a href="whitelist.html" class="active">Whitelist</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="reglement.html">Règlement RP</a></li>
+            <li><a href="index.html#rejoindre">Rejoindre</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="section">
+    <section class="whitelist-wrapper">
+        <div class="whitelist-intro">
+            <h1 class="section-title">Formulaire de whitelist</h1>
+            <p class="section-subtitle">
+                Merci de remplir ce formulaire avec sérieux. À la fin, un texte sera généré : 
+                <strong>copie-colle-le dans ton ticket Discord</strong> pour finaliser ta candidature.
+            </p>
+        </div>
+
+        <div class="whitelist-layout">
+            <form class="whitelist-form" id="whitelistForm">
+                <div class="form-group">
+                    <label for="pseudo">Pseudo en jeu</label>
+                    <input type="text" id="pseudo" name="pseudo" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Âge</label>
+                        <input type="number" id="age" name="age" min="12" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discord">Discord</label>
+                        <input type="text" id="discord" name="discord" placeholder="Ex : Pseudo#0001" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Expérience RP</label>
+                    <textarea id="experience" name="experience" rows="3" placeholder="Serveurs joués, temps de jeu, type de RP, etc." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="persoNom">Nom & prénom du personnage</label>
+                    <input type="text" id="persoNom" name="persoNom" placeholder="Ex : John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="persoStory">Histoire du personnage</label>
+                    <textarea id="persoStory" name="persoStory" rows="5" placeholder="Présente ton personnage, son passé, son caractère, ses objectifs..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="dispo">Disponibilités / Horaires de jeu</label>
+                    <textarea id="dispo" name="dispo" rows="3" placeholder="Ex : Soir en semaine, week-end l'après-midi..." required></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="rulesOk" required>
+                        Je confirme avoir lu et accepté le règlement de LegacyLife.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn primary full-width">Générer ma candidature</button>
+            </form>
+
+            <div class="whitelist-result">
+                <h2>Texte à envoyer sur Discord</h2>
+                <p class="result-help">
+                    Une fois généré, clique sur <strong>Copier</strong> puis colle le texte dans ton ticket whitelist sur le Discord.
+                </p>
+                <textarea id="resultText" readonly placeholder="Le texte apparaîtra ici après avoir envoyé le formulaire."></textarea>
+                <button class="btn discord full-width" id="copyBtn">Copier le texte</button>
+                <p class="copy-status" id="copyStatus"></p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-col brand">
+            <div class="footer-logo-row">
+                <img src="legacylife.png" alt="Logo LegacyLife" class="footer-logo">
+                <span class="footer-brand-name">LegacyLife</span>
+            </div>
+            <p>Serveur FiveM roleplay francophone, orienté sérieux mais fun, avec économie travaillée et staff à l’écoute.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Serveur</h4>
+            <p>IP FiveM : <code>fivem://connect ton.ip.ici:30120</code></p>
+            <p>Nom en jeu : <strong>LegacyLife RP</strong></p>
+        </div>
+        <div class="footer-col">
+            <h4>Communauté</h4>
+            <p>Discord : <a href="#">discord.gg/legacylife</a></p>
+            <p>TikTok : <a href="#">@LegacyLifeRP</a></p>
+            <p>YouTube : <a href="#">LegacyLife RP</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Liens rapides</h4>
+            <p><a href="index.html">Accueil</a></p>
+            <p><a href="concessionnaire.html">Concessionnaire</a></p>
+            <p><a href="whitelist.html">Whitelist</a></p>
+            <p><a href="admin.html">Panel admin</a></p>
+        </div>
+    </div>
+    <p class="footer-bottom">© <span id="year"></span> LegacyLife Roleplay – Tous droits réservés.</p>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('whitelistForm');
+    const resultText = document.getElementById('resultText');
+    const copyBtn = document.getElementById('copyBtn');
+    const copyStatus = document.getElementById('copyStatus');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const pseudo = document.getElementById('pseudo').value.trim();
+        const age = document.getElementById('age').value.trim();
+        const discord = document.getElementById('discord').value.trim();
+        const experience = document.getElementById('experience').value.trim();
+        const persoNom = document.getElementById('persoNom').value.trim();
+        const persoStory = document.getElementById('persoStory').value.trim();
+        const dispo = document.getElementById('dispo').value.trim();
+        const rulesOk = document.getElementById('rulesOk').checked ? 'Oui' : 'Non';
+
+        const bloc = [
+            '--- CANDIDATURE WHITELIST LEGACYLIFE ---',
+            '',
+            'Pseudo en jeu : ' + pseudo,
+            'Âge : ' + age,
+            'Discord : ' + discord,
+            '',
+            'Expérience RP :',
+            experience,
+            '',
+            'Nom & prénom du personnage : ' + persoNom,
+            '',
+            'Histoire du personnage :',
+            persoStory,
+            '',
+            'Disponibilités :',
+            dispo,
+            '',
+            'Règlement lu et accepté : ' + rulesOk,
+            '',
+            '--- FIN ---'
+        ].join('\n');
+
+        resultText.value = bloc;
+        resultText.focus();
+        resultText.select();
+        copyStatus.textContent = 'Texte généré ! Tu peux maintenant cliquer sur "Copier".';
+    });
+
+    copyBtn.addEventListener('click', function() {
+        if (!resultText.value) return;
+
+        resultText.select();
+        try {
+            const ok = document.execCommand('copy');
+            if (ok) {
+                copyStatus.textContent = 'Texte copié dans le presse-papier ✅';
+            } else {
+                copyStatus.textContent = 'Impossible de copier automatiquement, copie manuellement.';
+            }
+        } catch (err) {
+            copyStatus.textContent = 'Impossible de copier automatiquement, copie manuellement.';
+        }
+    });
+</script>
+</body>
+</html>

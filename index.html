@@ -1,236 +1,107 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>LegacyLife – FiveM Roleplay</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="intro-overlay" id="introOverlay">
-    <div class="intro-inner">
-        <div class="intro-logo-wrapper">
-            <img src="legacylife.png" alt="Logo LegacyLife" class="intro-logo">
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>LegacyLife – FiveM Roleplay</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Loader -->
+        <div class="loader" id="loader">
+            <img src="img/legacylife.png" alt="Loading" class="loader-logo" />
+            <div class="loader-text">LEGACYLIFE</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
         </div>
-        <h1 class="intro-title">LegacyLife Roleplay</h1>
-        <p class="intro-subtitle">Prépare-toi à écrire ta propre histoire en ville...</p>
-        <button class="btn primary intro-btn" id="introEnterBtn">Entrer en ville</button>
-    </div>
-    <div class="intro-bg-gradient"></div>
-</div>
-<header class="main-header">
-    <nav class="nav">
-        <div class="nav-left">
-            <img src="legacylife.png" alt="Logo LegacyLife" class="logo">
-            <span class="brand-name">LegacyLife</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="concessionnaire.html">Concessionnaire</a></li>
-            <li><a href="whitelist.html">Whitelist</a></li>
-            <li><a href="#features">Gameplay</a></li>
-            <li><a href="changelog.html">Changelog</a></li>
-            <li><a href="reglement.html">Règlement RP</a></li>
-            <li><a href="#staff">Staff</a></li>
-            <li><a href="#rejoindre">Rejoindre</a></li>
-            <li><a href="admin.html">Admin</a></li>
-        </ul>
-    </nav>
+        <!-- Particles Canvas -->
+        <canvas id="particles-canvas"></canvas>
+        <!-- Particules étoilées -->
+        <div class="stars" id="stars"></div>
+        <!-- Orbes lumineux flottants -->
+        <div
+            class="glow-orb"
+            style="
+                width: 300px;
+                height: 300px;
+                background: #a855f7;
+                top: 20%;
+                left: 10%;
+            "
+        ></div>
+        <div
+            class="glow-orb"
+            style="
+                width: 400px;
+                height: 400px;
+                background: #ec4899;
+                top: 60%;
+                right: 10%;
+                animation-delay: -10s;
+            "
+        ></div>
+        <div
+            class="glow-orb"
+            style="
+                width: 250px;
+                height: 250px;
+                background: #8b5cf6;
+                bottom: 10%;
+                left: 50%;
+                animation-delay: -5s;
+            "
+        ></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>LegacyLife <span>Roleplay</span></h1>
-            <p>
-                Plonge dans un univers RP sérieux, immersif et fun sur FiveM.
-                Crée ton histoire, fais évoluer ton personnage et laisse ta marque
-                sur la ville.
-            </p>
-            <div class="hero-buttons">
-                <a href="whitelist.html" class="btn primary">Faire une whitelist</a>
-                <a href="#" class="btn discord">Rejoindre le Discord</a>
+        <header class="site-header">
+            <div class="logo-title">
+                <img
+                    src="img/legacylife.png"
+                    alt="Logo LegacyLife"
+                    class="logo"
+                />
+                <h1>LegacyLife Roleplay</h1>
             </div>
-            <div class="hero-tags">
-                <span>Whitelisted</span>
-                <span>Économie réaliste</span>
-                <span>Jobs légaux & illégaux</span>
-            </div>
-        </div>
-        <div class="hero-logo-glow">
-            <img src="legacylife.png" alt="Logo LegacyLife">
-        </div>
-    </section>
-</header>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="#a-propos">À propos</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#regles">Règles</a></li>
+                    <li><a href="#rejoindre">Nous rejoindre</a></li>
+                    <li><a href="concessionnaire.html">Concessionnaire</a></li>
+                </ul>
+            </nav>
+        </header>
 
-<main>
-    <!-- Features -->
-    <section id="features" class="section">
-        <h2 class="section-title">Un RP moderne, dynamique et propre</h2>
-        <p class="section-subtitle">
-            LegacyLife a été pensé pour offrir une expérience stable, fluide et équilibrée,
-            autant pour les nouveaux joueurs que pour les vétérans du RP.
-        </p>
-        <div class="cards-grid">
-            <article class="info-card">
-                <h3>Jobs légaux</h3>
-                <p>
-                    EMS, LSPD, mécanicien, taxi, agent immobilier, journaliste, 
-                    et bien plus. Chaque rôle a une vraie utilité en ville.
-                </p>
-            </article>
-            <article class="info-card">
-                <h3>Activités illégales</h3>
-                <p>
-                    Systèmes de drogues, braquages, réseaux organisés, tout est 
-                    pensé pour le long terme et le roleplay.
-                </p>
-            </article>
-            <article class="info-card">
-                <h3>Économie & progression</h3>
-                <p>
-                    Gagne ta vie, monte tes entreprises, investis dans l’immobilier 
-                    et construis ton empire légal… ou non.
-                </p>
-            </article>
-            <article class="info-card">
-                <h3>Optimisation & stabilité</h3>
-                <p>
-                    Scripts optimisés, peu de lag, interface propre et claire pour 
-                    une immersion maximale.
-                </p>
-            </article>
-        </div>
-    </section>
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <h1>LEGACYLIFE</h1>
+                <p>Vivez une expérience RolePlay unique sur FiveM</p>
+                <a href="#rejoindre" class="cta-button">REJOINDRE MAINTENANT</a>
+            </div>
+        </section>
 
-    <!-- Règlement -->
-    <section id="reglement" class="section alt">
-        <h2 class="section-title">Règlement principal</h2>
-        <div class="rules">
-            <div class="rule">
-                <h3>Respect & bienveillance</h3>
-                <p>
-                    Aucun propos haineux, raciste, sexiste ou toxique.
-                    On joue pour s’amuser, pas pour se prendre la tête.
-                </p>
+        <section id="features">
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Véhicules Personnalisés</h3>
+                    <p>
+                        Une large gamme de véhicules avec système de tuning
+                        avancé
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Véhicules Personnalisés</h3>
+                    <p>
+                        Une large gamme de véhicules avec système de tuning
+                        avancé
+                    </p>
+                </div>
             </div>
-            <div class="rule">
-                <h3>RP sérieux</h3>
-                <p>
-                    Interdiction de se comporter en “gta online”.
-                    Le RP prime sur le reste : cohérence, logique, 
-                    interactions de qualité.
-                </p>
-            </div>
-            <div class="rule">
-                <h3>No Powergaming / No Metagaming</h3>
-                <p>
-                    Pas d’utilisation abusive de mécaniques de jeu ou d’infos hors RP.
-                    Ta connaissance IRL ≠ celle de ton personnage.
-                </p>
-            </div>
-            <div class="rule">
-                <h3>Utilisation du vocal</h3>
-                <p>
-                    Micro de bonne qualité, pas de fond sonore abusif,
-                    obligation d’être sur le Discord en jeu.
-                </p>
-            </div>
-        </div>
-        <p class="section-subtitle small">
-            Le règlement complet est disponible sur notre Discord.
-        </p>
-    </section>
-
-    <!-- Staff -->
-    <section id="staff" class="section">
-        <h2 class="section-title">L’équipe LegacyLife</h2>
-        <p class="section-subtitle">
-            Une équipe présente, à l’écoute et réactive pour garantir une 
-            expérience agréable à tous les joueurs.
-        </p>
-        <div class="staff-grid">
-            <div class="staff-card">
-                <h3>Fondateur</h3>
-                <p class="staff-name">NomRP#0001</p>
-                <p>Gestion globale du projet, développement et direction RP.</p>
-            </div>
-            <div class="staff-card">
-                <h3>Co-Fondateur</h3>
-                <p class="staff-name">NomRP#0002</p>
-                <p>Organisation RP, événements, encadrement des factions.</p>
-            </div>
-            <div class="staff-card">
-                <h3>Administration</h3>
-                <p class="staff-name">Staff & Support</p>
-                <p>Modération, support joueurs, vérification des candidatures.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rejoindre -->
-    <section id="rejoindre" class="section alt">
-        <h2 class="section-title">Rejoins LegacyLife</h2>
-        <p class="section-subtitle">
-            Tu veux tenter l’aventure ? Voici comment nous rejoindre.
-        </p>
-        <div class="join-grid">
-            <div class="join-step">
-                <span class="step-number">1</span>
-                <h3>Rejoindre le Discord</h3>
-                <p>Lis les infos, accepte le règlement et ouvre ton ticket si besoin.</p>
-            </div>
-            <div class="join-step">
-                <span class="step-number">2</span>
-                <h3>Faire ta whitelist</h3>
-                <p>Remplis le formulaire sur le site pour présenter ton personnage.</p>
-            </div>
-            <div class="join-step">
-                <span class="step-number">3</span>
-                <h3>Connexion au serveur</h3>
-                <p>Lance FiveM, cherche <strong>LegacyLife</strong> et connecte-toi.</p>
-            </div>
-        </div>
-
-        <div class="hero-buttons center">
-            <a href="whitelist.html" class="btn primary">Formulaire whitelist</a>
-            <a href="#" class="btn discord">Discord</a>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-col brand">
-            <div class="footer-logo-row">
-                <img src="legacylife.png" alt="Logo LegacyLife" class="footer-logo">
-                <span class="footer-brand-name">LegacyLife</span>
-            </div>
-            <p>Serveur FiveM roleplay francophone, orienté sérieux mais fun, avec économie travaillée et staff à l’écoute.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Serveur</h4>
-            <p>IP FiveM : <code>fivem://connect ton.ip.ici:30120</code></p>
-            <p>Nom en jeu : <strong>LegacyLife RP</strong></p>
-        </div>
-        <div class="footer-col">
-            <h4>Communauté</h4>
-            <p>Discord : <a href="#">discord.gg/legacylife</a></p>
-            <p>TikTok : <a href="#">@LegacyLifeRP</a></p>
-            <p>YouTube : <a href="#">LegacyLife RP</a></p>
-        </div>
-        <div class="footer-col">
-            <h4>Liens rapides</h4>
-            <p><a href="index.html">Accueil</a></p>
-            <p><a href="concessionnaire.html">Concessionnaire</a></p>
-            <p><a href="whitelist.html">Whitelist</a></p>
-            <p><a href="admin.html">Panel admin</a></p>
-        </div>
-    </div>
-    <p class="footer-bottom">© <span id="year"></span> LegacyLife Roleplay – Tous droits réservés.</p>
-</footer>
-
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-<script src="script.js"></script>
-</body>
+        </section>
+        <script src="scripts.js"></script>
+    </body>
 </html>
